@@ -19,15 +19,10 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         horizontalValue = Input.GetAxisRaw("Horizontal");
         Move(horizontalValue);
-    }
-
-    void FixedUpdate()
-    {
-
     }
 
 
