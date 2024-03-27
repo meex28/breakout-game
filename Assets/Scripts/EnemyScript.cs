@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System;
 
 [RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(Animator))]
 public class EnemyAI : MonoBehaviour
 {
     public List<Transform> waypoints;
-    public int nextPointIndex=0;
+    public int nextPointIndex = 0;
     int idChangeValue = 1;
     public float movementSpeed = 2;
 
@@ -28,11 +29,11 @@ public class EnemyAI : MonoBehaviour
         waypoints.transform.SetParent(root.transform);
         waypoints.transform.position = root.transform.position;
 
-        GameObject p1 = new GameObject("Point1"); 
+        GameObject p1 = new GameObject("Point1");
         p1.transform.SetParent(waypoints.transform);
         p1.transform.position = root.transform.position;
         IconManager.SetIcon(p1, IconManager.Icon.DiamondBlue);
-        GameObject p2 = new GameObject("Point2"); 
+        GameObject p2 = new GameObject("Point2");
         p2.transform.SetParent(waypoints.transform);
         p2.transform.position = root.transform.position;
         IconManager.SetIcon(p2, IconManager.Icon.DiamondBlue);
@@ -47,6 +48,7 @@ public class EnemyAI : MonoBehaviour
     private void FixedUpdate()
     {
         MoveToNextPoint();
+        SetAnimation();
     }
 
     void MoveToNextPoint()
@@ -55,16 +57,22 @@ public class EnemyAI : MonoBehaviour
         var initialLocalScale = transform.localScale;
         var initialScaleX = Math.Abs(initialLocalScale.x);
         var isFacingRight = goalPoint.transform.position.x > transform.position.x;
-        initialLocalScale.x = isFacingRight ? initialScaleX : -1 * initialScaleX; 
+        initialLocalScale.x = isFacingRight ? initialScaleX : -1 * initialScaleX;
         transform.localScale = initialLocalScale;
-        transform.position = Vector2.MoveTowards(transform.position,goalPoint.position,movementSpeed*Time.deltaTime);
-        if(Vector2.Distance(transform.position, goalPoint.position)<0.9f)
+        transform.position = Vector2.MoveTowards(transform.position, goalPoint.position, movementSpeed * Time.deltaTime);
+        if (Vector2.Distance(transform.position, goalPoint.position) < 0.9f)
         {
             if (nextPointIndex == waypoints.Count - 1)
                 idChangeValue = -1;
             if (nextPointIndex == 0)
                 idChangeValue = 1;
-            nextPointIndex += idChangeValue;
+            nextPointIndex = (nextPointIndex + idChangeValue) % waypoints.Count;
         }
+    }
+
+    void SetAnimation()
+    {
+        // TODO: when adding guards stopping it should be changed to activate animation only on move
+        GetComponent<Animator>().SetFloat("xVelocity", 1);
     }
 }
