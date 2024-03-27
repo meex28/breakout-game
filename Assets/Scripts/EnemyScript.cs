@@ -15,8 +15,15 @@ public class EnemyAI : MonoBehaviour
 
     public GameObject enemyVision;
     private string enemyVisionPrefabPath = "EnemyVision";
-    public float visionOffset = 3.3f;
     public float visionRange = 2.5f;
+    private BoxCollider2D boxCollider;
+    private float visionOffset;
+
+    void Awake() 
+    {
+        boxCollider = GetComponent<BoxCollider2D>();
+        visionOffset = boxCollider.bounds.size.x / 2f;
+    }
 
     private void Reset()
     {
@@ -25,7 +32,7 @@ public class EnemyAI : MonoBehaviour
 
     void Init()
     {
-        GetComponent<BoxCollider2D>().isTrigger = true;
+        boxCollider.isTrigger = true;
 
         GameObject root = new GameObject(name + "_Root");
         root.transform.position = transform.position;
@@ -39,6 +46,7 @@ public class EnemyAI : MonoBehaviour
     {
         MoveToNextPoint();
         SetAnimation();
+        IsPlayerInVision();
     }
 
     void MoveToNextPoint()
@@ -120,5 +128,29 @@ public class EnemyAI : MonoBehaviour
             p1.transform,
             p2.transform
         };
+    }
+
+    private void IsPlayerInVision()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            // add vissionOffset to Raycast origin to omit collisions with enemy itself
+            var origin = transform.position + new Vector3(isFacingRight ? visionOffset : -visionOffset, 0, 0);
+            var visionLength = enemyVision.GetComponent<SpriteRenderer>().bounds.size.x + visionOffset;
+            Vector2 direction = new Vector2(isFacingRight ? 1 : -1, 0);
+            RaycastHit2D hit = Physics2D.Raycast(origin, direction, visionLength);
+            if (hit.collider != null && hit.collider.CompareTag("Player"))
+            {
+                // TODO: add action after detection
+                Debug.Log("Player is in vision!");
+            }
+            Debug.DrawRay(origin, direction * visionLength - direction * new Vector2(visionOffset, 0), Color.red);
+        }
+        else
+        {
+            Debug.LogWarning("Player object not found.");
+        }
+
     }
 }
