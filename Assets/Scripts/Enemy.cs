@@ -137,7 +137,7 @@ public class EnemyAI : MonoBehaviour
         {
             // add vissionOffset to Raycast origin to omit collisions with enemy itself
             var origin = transform.position + new Vector3(isFacingRight ? visionOffset : -visionOffset, 0, 0);
-            var visionLength = enemyVision.GetComponent<SpriteRenderer>().bounds.size.x + visionOffset;
+            var visionLength = enemyVision.GetComponent<SpriteRenderer>().bounds.size.x;
             Vector2 direction = new Vector2(isFacingRight ? 1 : -1, 0);
             RaycastHit2D hit = Physics2D.Raycast(origin, direction, visionLength);
             if (hit.collider != null && hit.collider.CompareTag("Player"))
@@ -145,7 +145,7 @@ public class EnemyAI : MonoBehaviour
                 // TODO: add action after detection
                 Debug.Log("Player is in vision!");
             }
-            Debug.DrawRay(origin, direction * visionLength - direction * new Vector2(visionOffset, 0), Color.red);
+            Debug.DrawRay(origin, direction * visionLength, Color.red);
         }
         else
         {
