@@ -310,11 +310,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6945560200116776067, guid: da353e3548b780740b080fd2d2ebca58, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 6945560200116776067, guid: da353e3548b780740b080fd2d2ebca58, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.74
       objectReference: {fileID: 0}
     - target: {fileID: 6945560200116776067, guid: da353e3548b780740b080fd2d2ebca58, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2866,7 +2866,6 @@ MonoBehaviour:
   nextWaypointIndex: 0
   movementSpeed: 2
   enemyVision: {fileID: 31818347}
-  visionOffset: 1
   visionRange: 2.5
 --- !u!61 &1907354386
 BoxCollider2D:
@@ -3098,11 +3097,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 775916714488551374, guid: cd1cbb7eae53f2790880e94a3f5d95d4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.18
+      value: -5.51
       objectReference: {fileID: 0}
     - target: {fileID: 775916714488551374, guid: cd1cbb7eae53f2790880e94a3f5d95d4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.45
+      value: -3.97
       objectReference: {fileID: 0}
     - target: {fileID: 775916714488551374, guid: cd1cbb7eae53f2790880e94a3f5d95d4, type: 3}
       propertyPath: m_LocalPosition.z
