@@ -2,19 +2,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Animator))]
 public class EnemyAI : MonoBehaviour
 {
-    public GameObject enemyVision;
     public List<Transform> waypoints;
-    public int nextPointIndex = 0;
-    int idChangeValue = 1;
+    public int nextWaypointIndex = 0;
     public float movementSpeed = 2;
-    private string enemyVisionPrefabPath = "EnemyVision";
     private bool isFacingRight = false;
+
+    public GameObject enemyVision;
+    private string enemyVisionPrefabPath = "EnemyVision";
     public float visionOffset = 3.3f;
+    public float visionRange = 2.5f;
 
     private void Reset()
     {
@@ -30,23 +32,7 @@ public class EnemyAI : MonoBehaviour
         transform.SetParent(root.transform);
 
         this.enemyVision = AddEnemyVision(root.transform);
-        Debug.Log(this.enemyVision);
-        GameObject waypoints = new GameObject("Waypoints");
-        waypoints.transform.SetParent(root.transform);
-        waypoints.transform.position = root.transform.position;
-        GameObject p1 = new GameObject("Point1");
-        p1.transform.SetParent(waypoints.transform);
-        p1.transform.position = root.transform.position;
-        IconManager.SetIcon(p1, IconManager.Icon.DiamondBlue);
-        GameObject p2 = new GameObject("Point2");
-        p2.transform.SetParent(waypoints.transform);
-        p2.transform.position = root.transform.position;
-        IconManager.SetIcon(p2, IconManager.Icon.DiamondBlue);
-        this.waypoints = new List<Transform>
-        {
-            p1.transform,
-            p2.transform
-        };
+        this.waypoints = AddWaypoints(root.transform);
     }
 
     private void FixedUpdate()
@@ -57,7 +43,7 @@ public class EnemyAI : MonoBehaviour
 
     void MoveToNextPoint()
     {
-        Transform goalPoint = waypoints[nextPointIndex];
+        Transform goalPoint = waypoints[nextWaypointIndex];
         var initialLocalScale = transform.localScale;
         var initialScaleX = Math.Abs(initialLocalScale.x);
         isFacingRight = goalPoint.transform.position.x > transform.position.x;
@@ -66,11 +52,8 @@ public class EnemyAI : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, goalPoint.position, movementSpeed * Time.deltaTime);
         if (Vector2.Distance(transform.position, goalPoint.position) < 1f)
         {
-            if (nextPointIndex == waypoints.Count - 1)
-                idChangeValue = -1;
-            if (nextPointIndex == 0)
-                idChangeValue = 1;
-            nextPointIndex = (nextPointIndex + idChangeValue) % waypoints.Count;
+            nextWaypointIndex++;
+            nextWaypointIndex %= waypoints.Count;
         }
         MoveVision(transform);
     }
@@ -98,10 +81,44 @@ public class EnemyAI : MonoBehaviour
         return createdEnemyVision;
     }
 
-    private void MoveVision(Transform targetTransform)
+    private void MoveVision(Transform enemyTransform)
     {
-        var calcVisionOffset = isFacingRight ? visionOffset : -visionOffset;
-        var visionPosition = new Vector3(targetTransform.position.x + calcVisionOffset, targetTransform.position.y, targetTransform.position.z);
+        // set vision range by scaling
+        var localScale = enemyVision.transform.localScale;
+        localScale.x = visionRange;
+        enemyVision.transform.localScale = localScale;
+
+        // move vision
+        var visionLength = enemyVision.GetComponent<SpriteRenderer>().bounds.size.x;
+        var offset = visionLength / 2f + visionOffset;
+        var directedOffset = isFacingRight ? offset : -offset;
+        var visionPosition = new Vector3(enemyTransform.position.x + directedOffset, enemyTransform.position.y, enemyTransform.position.z);
         enemyVision.transform.position = visionPosition;
+
+        // rotate vision if needed
+        var initialScaleX = Math.Abs(enemyVision.transform.localScale.x);
+        var newLocalScale = enemyVision.transform.localScale;
+        newLocalScale.x = isFacingRight ? initialScaleX : -1 * initialScaleX;
+        enemyVision.transform.localScale = newLocalScale;
+    }
+
+    private List<Transform> AddWaypoints(Transform root)
+    {
+        GameObject waypoints = new GameObject("Waypoints");
+        waypoints.transform.SetParent(root);
+        waypoints.transform.position = root.position;
+        GameObject p1 = new GameObject("Point1");
+        p1.transform.SetParent(waypoints.transform);
+        p1.transform.position = root.position;
+        IconManager.SetIcon(p1, IconManager.Icon.DiamondBlue);
+        GameObject p2 = new GameObject("Point2");
+        p2.transform.SetParent(waypoints.transform);
+        p2.transform.position = root.position;
+        IconManager.SetIcon(p2, IconManager.Icon.DiamondBlue);
+        return new List<Transform>
+        {
+            p1.transform,
+            p2.transform
+        };
     }
 }
