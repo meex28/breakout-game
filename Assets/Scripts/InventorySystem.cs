@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +25,8 @@ public class InventorySystem : MonoBehaviour
         {
             ToggleInventory();
         }
+
+        CheckItemUsage();
     }
 
     void ToggleInventory()
@@ -90,5 +94,20 @@ public class InventorySystem : MonoBehaviour
             items.RemoveAt(id);
             Update_UI();
         }
+    }
+
+    private void CheckItemUsage()
+    {
+        KeyCode[] keyCodes = {KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5};
+        for(int i = 0; i<keyCodes.Length; i++) {
+            if(Input.GetKeyDown(keyCodes[i])) {
+                UseItem(i);
+            }
+        }
+    }
+
+    private void UseItem(int index) {
+        var selectedItem = items[index].GetComponent<Item>();
+        Debug.Log(selectedItem);
     }
 }
