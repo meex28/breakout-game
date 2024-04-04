@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class InventorySystem : MonoBehaviour
 {
     [Header("General Fields")]
-    public List<GameObject> items= new List<GameObject>();
+    public List<GameObject> items = new List<GameObject>();
     public bool isOpen;
     [Header("UI Items Section")]
     public GameObject ui_Window;
@@ -19,7 +19,7 @@ public class InventorySystem : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             ToggleInventory();
         }
@@ -42,20 +42,27 @@ public class InventorySystem : MonoBehaviour
     void Update_UI()
     {
         HideAll();
-        for(int i=0;i<items.Count;i++)
+        for (int i = 0; i < items.Count; i++)
         {
-            itemsImages[i].sprite = items[i].GetComponent<SpriteRenderer>().sprite;
+            SpriteRenderer spriteRenderer = items[i].GetComponent<SpriteRenderer>();
+            Sprite sprite = spriteRenderer.sprite;
+            float aspectRatio = sprite.rect.width / sprite.rect.height;
+            RectTransform rectTransform = itemsImages[i].GetComponent<RectTransform>();
+            float newSizeX = rectTransform.rect.height * aspectRatio;
+            float newSizeY = rectTransform.rect.height;
+            rectTransform.sizeDelta = new Vector2(newSizeX, newSizeY);
+            itemsImages[i].sprite = sprite;
             itemsImages[i].gameObject.SetActive(true);
         }
     }
 
-    void HideAll() 
-    { 
+    void HideAll()
+    {
         foreach (var i in itemsImages) { i.gameObject.SetActive(false); }
 
         // HideDescription();
     }
-    
+
     public void ShowDescription(int id)
     {
         description_Image.sprite = itemsImages[id].sprite;
@@ -75,7 +82,7 @@ public class InventorySystem : MonoBehaviour
 
     public void Consume(int id)
     {
-        if(items[id].GetComponent<Item>().type== Item.ItemType.Consumables)
+        if (items[id].GetComponent<Item>().type == Item.ItemType.Consumables)
         {
             Debug.Log($"CONSUMED {items[id].name}");
             items[id].GetComponent<Item>().consumeEvent.Invoke();
