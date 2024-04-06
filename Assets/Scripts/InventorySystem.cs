@@ -118,4 +118,9 @@ public class InventorySystem : MonoBehaviour
         items.Clear();
         Update_UI();
     }
+
+    public bool IncludesItem(Items searchedItem)
+    {
+        return items.Any(item => item.GetComponent<Item>().item == searchedItem);
+    }
 }
