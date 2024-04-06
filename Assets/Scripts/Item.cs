@@ -11,6 +11,7 @@ public class Item : MonoBehaviour
     [Header("Attributes")]
     public InteractionType interactType;
     public ItemType type;
+    public Items item; // item like energy_drink etc. TODO: refactor probably and rethink whole interaction system
     [Header("Examine")]
     public string descriptionText;
     [Header("Custom Events")]
@@ -23,7 +24,7 @@ public class Item : MonoBehaviour
         gameObject.layer = 6; // TODO: get layer by name or sth?
     }
 
-    public void Interact()
+    virtual public void Interact()
     {
         switch(interactType)
         {
