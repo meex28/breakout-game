@@ -7,7 +7,7 @@ public class PlayerLoss : MonoBehaviour
     public Transform respawnPoint;
     public GameObject player;
     public AudioClip loseSound;
-    public Text messageText;
+    public GameObject playerLostScreen;
     private bool isPlayerDetected = false; // use flag to prevent from raising action multiple times
 
     private void Start()
@@ -26,18 +26,13 @@ public class PlayerLoss : MonoBehaviour
         if (loseSound != null)
         {
             AudioSource.PlayClipAtPoint(loseSound, Camera.main.transform.position);
+            playerLostScreen.SetActive(true);
             StartCoroutine(MovePlayerToRespawnPointAfterSound());
         }
         else
         {
             Debug.LogWarning("No lose sound assigned.");
             MovePlayerToRespawnPoint();
-        }
-
-        // Display message on screen
-        if (messageText != null)
-        {
-            messageText.text = e.message;
         }
     }
 
@@ -59,6 +54,7 @@ public class PlayerLoss : MonoBehaviour
         if (player != null && respawnPoint != null)
         {
             player.transform.position = respawnPoint.position;
+            playerLostScreen.SetActive(false);
             StartCoroutine(ResetPlayerDetectionFlag());
         }
         else
