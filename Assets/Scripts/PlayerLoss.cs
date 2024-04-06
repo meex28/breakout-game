@@ -53,6 +53,7 @@ public class PlayerLoss : MonoBehaviour
     {
         if (player != null && respawnPoint != null)
         {
+            player.GetComponent<InventorySystem>().ClearInventory();
             player.transform.position = respawnPoint.position;
             playerLostScreen.SetActive(false);
             StartCoroutine(ResetPlayerDetectionFlag());

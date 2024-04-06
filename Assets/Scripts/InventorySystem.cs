@@ -110,4 +110,12 @@ public class InventorySystem : MonoBehaviour
         var selectedItem = items[index].GetComponent<Item>();
         Debug.Log(selectedItem);
     }
+
+    public void ClearInventory() {
+        items.ForEach(delegate(GameObject item) {
+            item.SetActive(true);
+        });
+        items.Clear();
+        Update_UI();
+    }
 }
