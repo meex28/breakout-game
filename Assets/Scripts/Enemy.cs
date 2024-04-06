@@ -18,8 +18,9 @@ public class EnemyAI : MonoBehaviour
     public float visionRange = 2.5f;
     private BoxCollider2D boxCollider;
     private float visionOffset;
+    public static event EventHandler<PlayerLostEvent> PlayerLost;
 
-    void Awake() 
+    void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
         visionOffset = boxCollider.bounds.size.x / 2f;
@@ -142,7 +143,7 @@ public class EnemyAI : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(origin, direction, visionLength);
             if (hit.collider != null && hit.collider.CompareTag("Player"))
             {
-                // TODO: add action after detection
+                InvokePlayerLostEvent();
                 Debug.Log("Player is in vision!");
             }
             Debug.DrawRay(origin, direction * visionLength, Color.red);
@@ -151,6 +152,19 @@ public class EnemyAI : MonoBehaviour
         {
             Debug.LogWarning("Player object not found.");
         }
+    }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            InvokePlayerLostEvent();
+            Debug.Log("Player has touched a guard.");
+        }
+    }
+
+    private void InvokePlayerLostEvent()
+    {
+        PlayerLost?.Invoke(this, new PlayerLostEvent("Player is detected by a guard!"));
     }
 }
