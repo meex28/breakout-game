@@ -131,28 +131,30 @@ public class EnemyAI : MonoBehaviour
         };
     }
 
-    private void IsPlayerInVision()
+ private void IsPlayerInVision()
+{
+    GameObject player = GameObject.FindGameObjectWithTag("Player");
+    if (player != null)
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
+        var origin = transform.position + new Vector3(isFacingRight ? visionOffset : -visionOffset, 0, 0);
+        var visionLength = enemyVision.GetComponent<SpriteRenderer>().bounds.size.x;
+        Vector2 direction = new Vector2(isFacingRight ? 1 : -1, 0);
+        int layerMask = 1 << LayerMask.NameToLayer("InvisibleToEnemy");
+        layerMask = ~layerMask;
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, visionLength, layerMask);
+        if (hit.collider != null && hit.collider.CompareTag("Player"))
         {
-            // add vissionOffset to Raycast origin to omit collisions with enemy itself
-            var origin = transform.position + new Vector3(isFacingRight ? visionOffset : -visionOffset, 0, 0);
-            var visionLength = enemyVision.GetComponent<SpriteRenderer>().bounds.size.x;
-            Vector2 direction = new Vector2(isFacingRight ? 1 : -1, 0);
-            RaycastHit2D hit = Physics2D.Raycast(origin, direction, visionLength);
-            if (hit.collider != null && hit.collider.CompareTag("Player"))
-            {
-                InvokePlayerLostEvent();
-                Debug.Log("Player is in vision!");
-            }
-            Debug.DrawRay(origin, direction * visionLength, Color.red);
+            InvokePlayerLostEvent();
+            Debug.Log("Player is in vision!");
         }
-        else
-        {
-            Debug.LogWarning("Player object not found.");
-        }
+        Debug.DrawRay(origin, direction * visionLength, Color.red);
     }
+    else
+    {
+        Debug.LogWarning("Player object not found.");
+    }
+}
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
