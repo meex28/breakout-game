@@ -158,11 +158,18 @@ private void IsPlayerInVision()
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+    if (other.CompareTag("Player"))
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("InvisibleToEnemy"))
+        {
+            Debug.Log("Player is invincible and cannot be harmed.");
+        }
+        else
         {
             InvokePlayerLostEvent();
             Debug.Log("Player has touched a guard.");
         }
+    }
     }
 
     private void InvokePlayerLostEvent()

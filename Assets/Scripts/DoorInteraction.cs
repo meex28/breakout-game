@@ -41,14 +41,14 @@ public class DoorInteraction : MonoBehaviour
         bool isInvisible = playerSpriteRenderer.color.a == 0.3f;
         if (!isInvisible)
         {
-            // Make the player 50% transparent
             playerSpriteRenderer.color = new Color(1f, 1f, 1f, 0.3f);
-            // Assuming there's a mechanism to make player not detectable by enemies
             player.layer = LayerMask.NameToLayer("InvisibleToEnemy");
+            DisableCollision();
         }
         else
         {
             ResetInvisibility();
+            EnableCollision();
         }
     }
 
@@ -57,5 +57,13 @@ public class DoorInteraction : MonoBehaviour
         // Reset player visibility
         playerSpriteRenderer.color = new Color(1f, 1f, 1f, 1f);
         player.layer = LayerMask.NameToLayer("Default");
+    }
+
+    private void EnableCollision()
+    {
+    }
+
+    private void DisableCollision()
+    {
     }
 }
