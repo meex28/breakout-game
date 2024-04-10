@@ -3,6 +3,7 @@ using UnityEngine;
 public class DoorInteraction : MonoBehaviour
 {
     public GameObject player; // Drag your player GameObject here in the inspector
+    public AudioSource sound;
     private SpriteRenderer playerSpriteRenderer;
     private bool isPlayerNear = false;
 
@@ -43,12 +44,14 @@ public class DoorInteraction : MonoBehaviour
         {
             playerSpriteRenderer.color = new Color(1f, 1f, 1f, 0.3f);
             player.layer = LayerMask.NameToLayer("InvisibleToEnemy");
+            sound.Play();
             DisableCollision();
         }
         else
         {
             ResetInvisibility();
             EnableCollision();
+            sound.Play();
         }
     }
 

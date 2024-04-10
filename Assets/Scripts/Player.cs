@@ -6,14 +6,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float movementSpeed = 5; // multiplies target velocity vector by it
-    public float movementSpeedBoost = 2.5f; // adds to currentMovementSpeed when player drinks a energy drink
-    private float currentMovementSpeed; // movementSpeed and actual boosts
+    public float movementSpeed = 5;
+    public float movementSpeedBoost = 2.5f;
+    private float currentMovementSpeed;
     private Rigidbody2D playerBody;
     private Animator animator;
-    private float horizontalValue; // stores value of which key is holding user (i.e. if below 0 then user is keeping left arrow or A)
+    private float horizontalValue;
     private bool isFacingRight = true;
-    public float boostDuration = 10f; // Time for which boost lasts (in seconds)
+    public float boostDuration = 10f;
+    public AudioSource moveSound;
 
     void Awake() 
     {
@@ -42,8 +43,13 @@ public class Player : MonoBehaviour
             var initialScaleX = Math.Abs(initialLocalScale.x);
             initialLocalScale.x = isFacingRight ? initialScaleX : -1 * initialScaleX; 
             transform.localScale = initialLocalScale;
-        }
+            if(!moveSound.isPlaying){
+                moveSound.Play();
+            }
 
+        } else {
+            moveSound.Stop();
+        }
         animator.SetFloat("xVelocity", isPlayerMoving ? 1 : 0);
     }
 
