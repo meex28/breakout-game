@@ -3,5 +3,6 @@ public enum Items {
     ENERGY_DRINK,
     KEY,
     CAMO_SHIRT,
-    PICKLOCK
+    PICKLOCK,
+    LOCKPICKING_TARGET
 }
