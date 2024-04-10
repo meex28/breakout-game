@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LevelFinalDoor : Item
 {
-    public float messageDuration = 2f;
+    public float messageDuration = 1f;
 
     override public void Interact() {
         bool playerHasKey = GameObject.FindWithTag("Player").GetComponent<InventorySystem>().IncludesItem(Items.KEY);
@@ -13,5 +13,6 @@ public class LevelFinalDoor : Item
         }
 
         Debug.Log("Player goes to the next level! :)");
+        MessageTextUI.DisplayMessage("Przechodzisz do następnego poziomu!", messageDuration);
     }
 }
