@@ -38,11 +38,11 @@ public class DoorInteraction : MonoBehaviour
 
     private void ToggleInvisibility()
     {
-        bool isInvisible = playerSpriteRenderer.color.a == 0.5f;
+        bool isInvisible = playerSpriteRenderer.color.a == 0.3f;
         if (!isInvisible)
         {
             // Make the player 50% transparent
-            playerSpriteRenderer.color = new Color(1f, 1f, 1f, 0.5f);
+            playerSpriteRenderer.color = new Color(1f, 1f, 1f, 0.3f);
             // Assuming there's a mechanism to make player not detectable by enemies
             player.layer = LayerMask.NameToLayer("InvisibleToEnemy");
         }

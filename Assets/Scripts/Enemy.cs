@@ -131,7 +131,7 @@ public class EnemyAI : MonoBehaviour
         };
     }
 
- private void IsPlayerInVision()
+private void IsPlayerInVision()
 {
     GameObject player = GameObject.FindGameObjectWithTag("Player");
     if (player != null)

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: df1ecb5250bf54228aebe256656e27f5
+guid: 7fe2e391b42984a19a5e97cc2eb23f9e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mop_0
+      name: doors_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 18
+        x: 0
+        y: 32
         width: 16
-        height: 18
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,83 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13eb604d2a9d6495b8381a62b0fb933f
-      internalID: -1681769997
+      spriteID: e1232e11bae36448889ccddf7cb3bfe5
+      internalID: -1910223606
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mop_1
+      name: doors_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5166f06118b540029f37568f23269ad
+      internalID: -1324731126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doors_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4835b6ef1d8294c34ba19c31eb668ff5
+      internalID: -909681873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doors_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cea5c9aaeba2443e68545d9d45b05ab2
+      internalID: 389715064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doors_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 18
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d34510ee37c2a4ac48c91bf9d942e234
-      internalID: -307327309
+      spriteID: 1c32f110ec6374f93ad16cf62fd6c5b5
+      internalID: 1784343366
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mop_2
+      name: doors_5
       rect:
         serializedVersion: 2
         x: 16
         y: 0
         width: 16
-        height: 18
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06d62d8d80b1a4ffd9b23a3c61bdeca0
-      internalID: 397333191
+      spriteID: 88ba20eff86d0451dbcee7fbdcf52e71
+      internalID: 187885699
       vertices: []
       indices: 
       edges: []
@@ -183,9 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Mop_0: -1681769997
-      Mop_1: -307327309
-      Mop_2: 397333191
+      doors_0: -1910223606
+      doors_1: -1324731126
+      doors_2: -909681873
+      doors_3: 389715064
+      doors_4: 1784343366
+      doors_5: 187885699
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
