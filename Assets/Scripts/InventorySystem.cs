@@ -107,8 +107,18 @@ public class InventorySystem : MonoBehaviour
     }
 
     private void UseItem(int index) {
-        var selectedItem = items[index].GetComponent<Item>();
+        var selectedItem = items[index].GetComponent<Item>().item;
         Debug.Log(selectedItem);
+        switch (selectedItem)
+        {
+            case Items.ENERGY_DRINK:
+                Debug.Log("Boosting player speed!");
+                GameObject.FindWithTag("Player").GetComponent<Player>().BoostSpeed();
+                RemoveItem(index);
+                break;
+            default:
+                break;
+        }
     }
 
     public void ClearInventory() {
@@ -116,6 +126,11 @@ public class InventorySystem : MonoBehaviour
             item.SetActive(true);
         });
         items.Clear();
+        Update_UI();
+    }
+
+    public void RemoveItem(int index) {
+        items.RemoveAt(index);
         Update_UI();
     }
 
