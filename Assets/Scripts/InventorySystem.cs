@@ -22,6 +22,7 @@ public class InventorySystem : MonoBehaviour
     public GameObject ui_Window;
     public List<Image> itemsImages = new List<Image>();
     public List<Text> itemsQuantityText = new List<Text>();
+    public List<Text> itemsSlotNumberText = new List<Text>();
 
     void Awake()
     {
@@ -78,6 +79,7 @@ public class InventorySystem : MonoBehaviour
                 itemsImages[slotIndex].gameObject.SetActive(true);
 
                 itemsQuantityText[slotIndex].text = "x" + itemEntry.Count.ToString();
+                itemsSlotNumberText[slotIndex].text = (slotIndex + 1).ToString();
             }
             slotIndex++;
         }
@@ -87,6 +89,7 @@ public class InventorySystem : MonoBehaviour
     {
         foreach (var i in itemsImages) { i.gameObject.SetActive(false); }
         foreach (var i in itemsQuantityText) { i.text = ""; }
+        foreach (var i in itemsSlotNumberText) { i.text = ""; }
     }
 
     private void CheckItemUsage()
