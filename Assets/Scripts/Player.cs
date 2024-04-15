@@ -13,10 +13,12 @@ public class Player : MonoBehaviour
     private Animator animator;
     private float horizontalValue;
     private bool isFacingRight = true;
-    public float boostDuration = 10f;
+    public float boostDuration = 8f;
+    public float camoDuration = 6f;
+    public Boolean isCamoActive = false;
     public AudioSource moveSound;
 
-    void Awake() 
+    void Awake()
     {
         playerBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -30,24 +32,28 @@ public class Player : MonoBehaviour
     }
 
 
-    void Move(float dir) 
+    void Move(float dir)
     {
         var calcDir = dir * currentMovementSpeed * 100 * Time.deltaTime;
         Vector2 targetVelocity = new Vector2(calcDir, playerBody.velocity.y);
         playerBody.velocity = targetVelocity;
 
         var isPlayerMoving = dir != 0;
-        if(isPlayerMoving) {
+        if (isPlayerMoving)
+        {
             isFacingRight = dir > 0;
             var initialLocalScale = transform.localScale;
             var initialScaleX = Math.Abs(initialLocalScale.x);
-            initialLocalScale.x = isFacingRight ? initialScaleX : -1 * initialScaleX; 
+            initialLocalScale.x = isFacingRight ? initialScaleX : -1 * initialScaleX;
             transform.localScale = initialLocalScale;
-            if(!moveSound.isPlaying){
+            if (!moveSound.isPlaying)
+            {
                 moveSound.Play();
             }
 
-        } else {
+        }
+        else
+        {
             moveSound.Stop();
         }
         animator.SetFloat("xVelocity", isPlayerMoving ? 1 : 0);
@@ -64,5 +70,34 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(10f);
         currentMovementSpeed = movementSpeed;
+    }
+
+    public void UseCamoShirt()
+    {
+        SetInvisible();
+        GameObject.FindWithTag("GameManager").GetComponent<TimerDisplay>().AddTimer("Koszula camo", camoDuration);
+        isCamoActive = true;
+        StartCoroutine(ResetCamo());
+    }
+
+    IEnumerator ResetCamo()
+    {
+        yield return new WaitForSeconds(camoDuration);
+        isCamoActive = false;
+        SetVisible();
+    }
+
+    public void SetInvisible()
+    {
+        if(isCamoActive) return;
+        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.3f);
+        gameObject.layer = LayerMask.NameToLayer("InvisibleToEnemy");
+    }
+
+    public void SetVisible()
+    {
+        if(isCamoActive) return; // if camo is active we don't wont to interact with doors (just to keep it safe xD)
+        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+        gameObject.layer = LayerMask.NameToLayer("Default");
     }
 }

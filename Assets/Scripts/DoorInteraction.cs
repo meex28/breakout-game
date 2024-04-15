@@ -42,8 +42,7 @@ public class DoorInteraction : MonoBehaviour
         bool isInvisible = playerSpriteRenderer.color.a == 0.3f;
         if (!isInvisible)
         {
-            playerSpriteRenderer.color = new Color(1f, 1f, 1f, 0.3f);
-            player.layer = LayerMask.NameToLayer("InvisibleToEnemy");
+            player.GetComponent<Player>().SetInvisible();
             sound.Play();
             DisableCollision();
         }
@@ -58,8 +57,7 @@ public class DoorInteraction : MonoBehaviour
     private void ResetInvisibility()
     {
         // Reset player visibility
-        playerSpriteRenderer.color = new Color(1f, 1f, 1f, 1f);
-        player.layer = LayerMask.NameToLayer("Default");
+        player.GetComponent<Player>().SetVisible();
     }
 
     private void EnableCollision()

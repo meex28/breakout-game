@@ -117,6 +117,11 @@ public class InventorySystem : MonoBehaviour
                 GameObject.FindWithTag("Player").GetComponent<Player>().BoostSpeed();
                 RemoveItem(item);
                 break;
+            case Items.CAMO_SHIRT:
+                Debug.Log("Wearing camo shirt!");
+                GameObject.FindWithTag("Player").GetComponent<Player>().UseCamoShirt();
+                RemoveItem(item);
+                break;
             default:
                 break;
         }
