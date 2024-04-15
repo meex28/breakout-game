@@ -4,5 +4,6 @@ public enum Items {
     KEY,
     CAMO_SHIRT,
     PICKLOCK,
-    LOCKPICKING_TARGET
+    LOCKPICKING_TARGET,
+    DONUT
 }

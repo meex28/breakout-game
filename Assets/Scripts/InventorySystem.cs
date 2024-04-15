@@ -7,17 +7,26 @@ using UnityEngine.UI;
 
 public class InventorySystem : MonoBehaviour
 {
+    [Serializable]
+    public class ItemEntry
+    {
+        public Items item;
+        public GameObject gameObject;
+    }
+
     [Header("General Fields")]
-    public List<GameObject> items = new List<GameObject>();
+    public Dictionary<Items, List<GameObject>> itemsMap = new Dictionary<Items, List<GameObject>>();
+    private List<GameObject> pickedItems = new List<GameObject>(); // use it to set it active after death
     public bool isOpen;
     [Header("UI Items Section")]
     public GameObject ui_Window;
     public List<Image> itemsImages = new List<Image>();
-    [Header("UI Item Description")]
-    public GameObject ui_Description_Window;
-    public Image description_Image;
-    public Text description_Title;
-    public Text description_Text;
+    public List<Text> itemsQuantityText = new List<Text>();
+
+    void Awake()
+    {
+        ClearInventory();
+    }
 
     private void Update()
     {
@@ -39,103 +48,105 @@ public class InventorySystem : MonoBehaviour
 
     public void PickUp(GameObject item)
     {
-        items.Add(item);
+        Items itemType = item.GetComponent<Item>().item;
+        if (!itemsMap.ContainsKey(itemType))
+        {
+            itemsMap[itemType] = new List<GameObject>();
+        }
+        itemsMap[itemType].Add(item);
+        pickedItems.Add(item);
+        Debug.Log(itemsMap[itemType].Count);
         Update_UI();
     }
 
     void Update_UI()
     {
         HideAll();
-        for (int i = 0; i < items.Count; i++)
+        var slotIndex = 0;
+        foreach (var itemEntry in itemsMap.Values)
         {
-            SpriteRenderer spriteRenderer = items[i].GetComponent<SpriteRenderer>();
-            Sprite sprite = spriteRenderer.sprite;
-            float aspectRatio = sprite.rect.width / sprite.rect.height;
-            RectTransform rectTransform = itemsImages[i].GetComponent<RectTransform>();
-            float newSizeX = rectTransform.rect.height * aspectRatio;
-            float newSizeY = rectTransform.rect.height;
-            rectTransform.sizeDelta = new Vector2(newSizeX, newSizeY);
-            itemsImages[i].sprite = sprite;
-            itemsImages[i].gameObject.SetActive(true);
+            if (itemEntry.Count > 0) {
+                var itemToDisplay = itemEntry[0];
+                SpriteRenderer spriteRenderer = itemToDisplay.GetComponent<SpriteRenderer>();
+                Sprite sprite = spriteRenderer.sprite;
+                float aspectRatio = sprite.rect.width / sprite.rect.height;
+                RectTransform rectTransform = itemsImages[slotIndex].GetComponent<RectTransform>();
+                float newSizeX = rectTransform.rect.height * aspectRatio;
+                float newSizeY = rectTransform.rect.height;
+                rectTransform.sizeDelta = new Vector2(newSizeX, newSizeY);
+                itemsImages[slotIndex].sprite = sprite;
+                itemsImages[slotIndex].gameObject.SetActive(true);
+
+                itemsQuantityText[slotIndex].text = "x" + itemEntry.Count.ToString();
+            }
+            slotIndex++;
         }
     }
 
     void HideAll()
     {
         foreach (var i in itemsImages) { i.gameObject.SetActive(false); }
-
-        // HideDescription();
-    }
-
-    public void ShowDescription(int id)
-    {
-        description_Image.sprite = itemsImages[id].sprite;
-        description_Title.text = items[id].name;
-        description_Text.text = items[id].GetComponent<Item>().descriptionText;
-        description_Image.gameObject.SetActive(true);
-        description_Title.gameObject.SetActive(true);
-        description_Text.gameObject.SetActive(true);
-    }
-
-    public void HideDescription()
-    {
-        description_Image.gameObject.SetActive(false);
-        description_Title.gameObject.SetActive(false);
-        description_Text.gameObject.SetActive(false);
-    }
-
-    public void Consume(int id)
-    {
-        if (items[id].GetComponent<Item>().type == Item.ItemType.Consumables)
-        {
-            Debug.Log($"CONSUMED {items[id].name}");
-            items[id].GetComponent<Item>().consumeEvent.Invoke();
-            Destroy(items[id], 0.1f);
-            items.RemoveAt(id);
-            Update_UI();
-        }
+        foreach (var i in itemsQuantityText) { i.text = ""; }
     }
 
     private void CheckItemUsage()
     {
-        KeyCode[] keyCodes = {KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5};
-        for(int i = 0; i<keyCodes.Length; i++) {
-            if(Input.GetKeyDown(keyCodes[i])) {
-                UseItem(i);
+        Items[] itemsKeyCodeMapping = { Items.ENERGY_DRINK, Items.CAMO_SHIRT, Items.DONUT, Items.KEY, Items.PICKLOCK };
+        KeyCode[] keyCodes = { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5 };
+        for (int i = 0; i < keyCodes.Length; i++)
+        {
+            if (Input.GetKeyDown(keyCodes[i]))
+            {
+                UseItem(itemsKeyCodeMapping[i]);
             }
         }
     }
 
-    private void UseItem(int index) {
-        var selectedItem = items[index].GetComponent<Item>().item;
-        Debug.Log(selectedItem);
-        switch (selectedItem)
+    private void UseItem(Items item)
+    {
+        Debug.Log("Use item " + item);
+        if (!IncludesItem(item))
+        {
+            Debug.Log(item + " not found in inventory!");
+            return;
+        }
+        switch (item)
         {
             case Items.ENERGY_DRINK:
                 Debug.Log("Boosting player speed!");
                 GameObject.FindWithTag("Player").GetComponent<Player>().BoostSpeed();
-                RemoveItem(index);
+                RemoveItem(item);
                 break;
             default:
                 break;
         }
     }
 
-    public void ClearInventory() {
-        items.ForEach(delegate(GameObject item) {
-            item.SetActive(true);
-        });
-        items.Clear();
+    public void ClearInventory()
+    {
+        itemsMap.Clear();
+
+        // initialize and set order of inventory
+        itemsMap[Items.ENERGY_DRINK] = new List<GameObject>();
+        itemsMap[Items.CAMO_SHIRT] = new List<GameObject>();
+        itemsMap[Items.DONUT] = new List<GameObject>();
+        itemsMap[Items.KEY] = new List<GameObject>();
+        itemsMap[Items.PICKLOCK] = new List<GameObject>();
+
+        pickedItems.ForEach(item => item.SetActive(true));
+        pickedItems.Clear();
+
         Update_UI();
     }
 
-    public void RemoveItem(int index) {
-        items.RemoveAt(index);
+    public void RemoveItem(Items item)
+    {
+        itemsMap[item].RemoveAt(0);
         Update_UI();
     }
 
     public bool IncludesItem(Items searchedItem)
     {
-        return items.Any(item => item.GetComponent<Item>().item == searchedItem);
+        return itemsMap.ContainsKey(searchedItem) && itemsMap[searchedItem].Count > 0;
     }
 }
