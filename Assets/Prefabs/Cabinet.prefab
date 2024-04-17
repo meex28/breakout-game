@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 35c7247dbd6314655818d1cb83e19127, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ba3208ba124914a359f47d1af1f8f955, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -153,4 +153,5 @@ MonoBehaviour:
   consumeEvent:
     m_PersistentCalls:
       m_Calls: []
+  successBarUI: {fileID: 0}
   messageDuration: 2
