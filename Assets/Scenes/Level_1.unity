@@ -26851,7 +26851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4db3f1f592b2d08abbc1bec9575bfc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 1
+  index: 2
 --- !u!1 &1179231425
 GameObject:
   m_ObjectHideFlags: 0
@@ -27196,7 +27196,8 @@ MonoBehaviour:
   consumeEvent:
     m_PersistentCalls:
       m_Calls: []
-  messageDuration: 3
+  noKeyMessageduration: 1
+  doorOpenedMessageDuration: 1
 --- !u!212 &1332453031
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27331,7 +27332,8 @@ MonoBehaviour:
   consumeEvent:
     m_PersistentCalls:
       m_Calls: []
-  messageDuration: 2
+  noKeyMessageduration: 1
+  doorOpenedMessageDuration: 1
 --- !u!4 &1364151197 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4411401025313257169, guid: 48970217240afe2c1b265b64617fa972, type: 3}
@@ -29315,9 +29317,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 238732579293507506, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
+      propertyPath: m_Name
+      value: MenuReturnButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 620583773625076661, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2901250776053435987, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnToMainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050913030601992501, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
+      propertyPath: m_Name
+      value: SaveGameButton
+      objectReference: {fileID: 0}
     - target: {fileID: 3250080804801232345, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3250080804801232345, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4071498697472634115, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
       propertyPath: m_Pivot.x

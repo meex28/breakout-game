@@ -187,6 +187,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 238732579293507506, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
+      propertyPath: m_Name
+      value: MenuReturnButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2901250776053435987, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnToMainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050913030601992501, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
+      propertyPath: m_Name
+      value: SaveGameButton
+      objectReference: {fileID: 0}
     - target: {fileID: 3250080804801232345, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
       propertyPath: m_Name
       value: UI
@@ -2184,7 +2196,8 @@ MonoBehaviour:
   consumeEvent:
     m_PersistentCalls:
       m_Calls: []
-  messageDuration: 2
+  noKeyMessageduration: 1
+  doorOpenedMessageDuration: 1
 --- !u!61 &1416438130
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2252,7 +2265,8 @@ MonoBehaviour:
   consumeEvent:
     m_PersistentCalls:
       m_Calls: []
-  messageDuration: 3
+  noKeyMessageduration: 1
+  doorOpenedMessageDuration: 1
 --- !u!212 &1416438132
 SpriteRenderer:
   m_ObjectHideFlags: 0
