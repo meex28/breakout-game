@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
 
     public void SetVisible()
     {
-        if(isCamoActive) return; // if camo is active we don't wont to interact with doors (just to keep it safe xD)
+        if(isCamoActive) return; // if camo is active we don't want to interact with doors (just to keep it safe xD)
         GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
         gameObject.layer = LayerMask.NameToLayer("Default");
     }
