@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 240.84, y: 135}
+  m_AnchoredPosition: {x: 240.84, y: 151.125}
   m_SizeDelta: {x: 61.6036, y: 9.0373}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5377332195390112874
@@ -120,7 +120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6294898099219687968}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: LoadSavedLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2365930079076680335
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +200,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0fa6455a202a040619b3664b76e032f8, type: 3}
-    m_FontSize: 48
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0

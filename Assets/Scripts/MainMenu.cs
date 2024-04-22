@@ -26,13 +26,15 @@ public class MainMenu : MonoBehaviour
 
 
     // levelIndex from 1 to 3, slotIndex from 0 to 2
-    public void Save(int slotIndex, int levelIndex)
+    public void Save(int slotIndex)
     {
+        var levelIndex = SceneManager.GetActiveScene().buildIndex;
         Debug.Log("Save level " + levelIndex + " to slot " + slotIndex);
         PlayerPrefs.SetInt(savedLevelsKeys[slotIndex], levelIndex);
         string saveDatetime = DateTime.Now.ToString(); // Convert datetime to string
         PlayerPrefs.SetString(savedLevelsKeys[slotIndex] + "_Datetime", saveDatetime);
         PlayerPrefs.Save();
+        HideSaveSlots();
     }
 
     public void LoadSavedLevel(int slotIndex)
@@ -64,19 +66,19 @@ public class MainMenu : MonoBehaviour
         return new SavedLevel(levelIndex, saveDatetime);
     }
 
-    public void ShowSaveSlots()
+    public void ShowSaveSlots(bool isSaving = false)
     {
         var savedLevels = GetSavedLevelFromPrefs();
         for (int i = 0; i < savedLevels.Length; i++)
         {
             var savedLevel = savedLevels[i];
-            
+
             string buttonText = savedLevel == null 
             ? "Pusty" 
-            : "Poziom " + savedLevel.levelIndex + " (" + savedLevel.saveDatetime.ToString("yyyy-MM-dd HH:mm:ss") + ")";
+            : "Poziom " + savedLevel.levelIndex + "\n(" + savedLevel.saveDatetime.ToString("yyyy-MM-dd HH:mm:ss") + ")";
             saveSlotButtons[i].GetComponentInChildren<UnityEngine.UI.Text>().text = buttonText;
 
-            var isInteractable = savedLevel != null;
+            var isInteractable = savedLevel != null || isSaving;
             saveSlotButtons[i].GetComponent<UnityEngine.UI.Button>().interactable = isInteractable;
         }
         saveSlotsPanel.SetActive(true);
