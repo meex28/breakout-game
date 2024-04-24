@@ -82,6 +82,7 @@ public class EnemyAI : MonoBehaviour
             createdEnemyVision = Instantiate(enemyVisionPrefab, transform.position, Quaternion.identity);
             createdEnemyVision.transform.SetParent(root);
             createdEnemyVision.transform.localPosition = Vector3.zero;
+            createdEnemyVision.layer = LayerMask.NameToLayer("Vision");
         }
         else
         {

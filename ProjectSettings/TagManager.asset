@@ -17,9 +17,9 @@ TagManager:
   - Items
   - InvisibleToEnemy
   - Enemy
-  - 
+  - SeeThrough
   - Background
-  - 
+  - Vision
   - 
   - 
   - 
