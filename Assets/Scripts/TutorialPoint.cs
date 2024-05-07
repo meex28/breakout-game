@@ -10,6 +10,7 @@ public class TutorialPoint : MonoBehaviour
     public string messageKey = "";
     public float activationRange = 5f;
     private bool playerInRange = false;
+    private bool messageShown = false;
 
     void Start()
     {
@@ -45,6 +46,11 @@ public class TutorialPoint : MonoBehaviour
 
     private void ShowTutorialMessage()
     {
+        if (messageShown)
+        {
+            return;
+        }
+        messageShown = true;
         if (tutorialPanel != null)
         {
             Time.timeScale = 0f;
