@@ -25,7 +25,7 @@ public class MainMenu : MonoBehaviour
     }
 
 
-    // levelIndex from 1 to 3, slotIndex from 0 to 2
+    // levelIndex from 1 to 4, slotIndex from 0 to 3
     public void Save(int slotIndex)
     {
         var levelIndex = SceneManager.GetActiveScene().buildIndex;
