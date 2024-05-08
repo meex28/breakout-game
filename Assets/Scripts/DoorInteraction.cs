@@ -6,10 +6,12 @@ public class DoorInteraction : MonoBehaviour
     public AudioSource sound;
     private SpriteRenderer playerSpriteRenderer;
     private bool isPlayerNear = false;
+    public GameObject hidePrompt;
 
     private void Start()
     {
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
+        hidePrompt.SetActive(false);
     }
 
     private void Update()
@@ -25,6 +27,7 @@ public class DoorInteraction : MonoBehaviour
         if (other.gameObject == player)
         {
             isPlayerNear = true;
+            hidePrompt.SetActive(true); 
         }
     }
 
@@ -34,6 +37,7 @@ public class DoorInteraction : MonoBehaviour
         {
             isPlayerNear = false;
             ResetInvisibility(); // Resets visibility when player leaves the door area
+            hidePrompt.SetActive(false); 
         }
     }
 
