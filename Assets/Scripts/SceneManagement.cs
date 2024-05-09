@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class NextLevel : MonoBehaviour
 {
     public int index;
+    private Animator animator;
 
     void Update()
     {
@@ -20,5 +21,7 @@ public class NextLevel : MonoBehaviour
     {
         Debug.Log("Move to next level: " + index);
         SceneManager.LoadScene(index);
+        animator = GetComponent<Animator>();
+        animator.SetTrigger("Fade In Out");
     }
 }

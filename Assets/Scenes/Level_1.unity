@@ -31980,7 +31980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6769514804098199825, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
       propertyPath: m_UiScaleMode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7223605638146543133, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
       propertyPath: m_FontData.m_FontSize
