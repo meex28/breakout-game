@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;  // Add this line to use SceneManager
 
 public class PlayerLoss : MonoBehaviour
 {
@@ -8,11 +8,10 @@ public class PlayerLoss : MonoBehaviour
     public GameObject player;
     public AudioClip loseSound;
     public GameObject playerLostScreen;
-    private bool isPlayerDetected = false; // use flag to prevent from raising action multiple times
+    private bool isPlayerDetected = false;
 
     private void Start()
     {
-        // Subscribe to the event
         EnemyAI.PlayerLost += HandlePlayerLost;
     }
 
@@ -54,9 +53,13 @@ public class PlayerLoss : MonoBehaviour
         if (player != null && respawnPoint != null)
         {
             player.GetComponent<InventorySystem>().ClearInventory();
-            player.transform.position = respawnPoint.position;
-            playerLostScreen.SetActive(false);
             StartCoroutine(ResetPlayerDetectionFlag());
+
+            // Reload the current scene
+            Scene currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.name);
+
+            playerLostScreen.SetActive(false);
         }
         else
         {
