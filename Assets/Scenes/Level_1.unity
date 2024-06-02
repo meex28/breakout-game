@@ -1918,9 +1918,9 @@ MonoBehaviour:
       m_Calls: []
   noKeyMessageDuration: 1
   doorOpenedMessageDuration: 1
-  endTransistion: {fileID: 0}
-  textTransistion: {fileID: 0}
-  startTransistion: {fileID: 0}
+  endTransistion: {fileID: 1761107906}
+  textTransistion: {fileID: 1940668496}
+  startTransistion: {fileID: 1373864006}
 --- !u!212 &651369795
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28748,6 +28748,11 @@ Transform:
   - {fileID: 416039836}
   m_Father: {fileID: 1583921005}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1373864006 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7725751071460907142, guid: 526cea91360c54bb1bcc408b32a6c620, type: 3}
+  m_PrefabInstance: {fileID: 1595312596}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1438399903
 GameObject:
   m_ObjectHideFlags: 0
@@ -30520,6 +30525,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7915757665263036589, guid: 39cc61128898897e986f42ab1f646c49, type: 3}
   m_PrefabInstance: {fileID: 1697818986}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1761107906 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7115460230411061082, guid: 526cea91360c54bb1bcc408b32a6c620, type: 3}
+  m_PrefabInstance: {fileID: 1595312596}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1788163419
 GameObject:
@@ -32614,6 +32624,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1475521387045255545, guid: cd1cbb7eae53f2790880e94a3f5d95d4, type: 3}
   m_PrefabInstance: {fileID: 1936852419}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1940668496 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1046154564625693228, guid: 526cea91360c54bb1bcc408b32a6c620, type: 3}
+  m_PrefabInstance: {fileID: 1595312596}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2005311639
 GameObject:

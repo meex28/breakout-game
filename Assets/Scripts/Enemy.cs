@@ -140,7 +140,11 @@ private void IsPlayerInVision()
         var origin = transform.position + new Vector3(isFacingRight ? visionOffset : -visionOffset, 0, 0);
         var visionLength = enemyVision.GetComponent<SpriteRenderer>().bounds.size.x;
         Vector2 direction = new Vector2(isFacingRight ? 1 : -1, 0);
-        int layerMask = 1 << LayerMask.NameToLayer("InvisibleToEnemy");
+
+        int invisibleToEnemy = 1 << LayerMask.NameToLayer("InvisibleToEnemy");
+        int seeThrough = 1 << LayerMask.NameToLayer("SeeThrough");
+        int items = 1 << LayerMask.NameToLayer("Items");
+        int layerMask = invisibleToEnemy | seeThrough | items;
         layerMask = ~layerMask;
         RaycastHit2D hit = Physics2D.Raycast(origin, direction, visionLength, layerMask);
         if (hit.collider != null && hit.collider.CompareTag("Player"))

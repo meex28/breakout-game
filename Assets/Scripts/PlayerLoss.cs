@@ -71,7 +71,7 @@ public class PlayerLoss : MonoBehaviour
 
     private void StopAlarmIfActive()
     {
-        var alarm = GameObject.FindGameObjectWithTag("AlarmStartPoint").GetComponent<Alarm>();
+        var alarm = GameObject.FindGameObjectWithTag("AlarmStartPoint")?.GetComponent<Alarm>();
 
         if(alarm == null) 
         {

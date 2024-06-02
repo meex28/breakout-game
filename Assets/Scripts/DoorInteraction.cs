@@ -11,7 +11,12 @@ public class DoorInteraction : MonoBehaviour
     private void Start()
     {
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
-        hidePrompt.SetActive(false);
+        if (hidePrompt != null)
+        {
+            hidePrompt.SetActive(false);
+        } else {
+            Debug.LogWarning("HidePrompt not set.");
+        }
     }
 
     private void Update()
@@ -27,7 +32,7 @@ public class DoorInteraction : MonoBehaviour
         if (other.gameObject == player)
         {
             isPlayerNear = true;
-            hidePrompt.SetActive(true); 
+            hidePrompt?.SetActive(true);
         }
     }
 
@@ -37,7 +42,7 @@ public class DoorInteraction : MonoBehaviour
         {
             isPlayerNear = false;
             ResetInvisibility(); // Resets visibility when player leaves the door area
-            hidePrompt.SetActive(false); 
+            hidePrompt?.SetActive(false);
         }
     }
 

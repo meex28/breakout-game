@@ -324,7 +324,6 @@ GameObject:
   m_Component:
   - component: {fileID: 50274721}
   - component: {fileID: 50274725}
-  - component: {fileID: 50274724}
   - component: {fileID: 50274723}
   - component: {fileID: 50274722}
   m_Layer: 6
@@ -373,9 +372,9 @@ MonoBehaviour:
       m_Calls: []
   noKeyMessageDuration: 1
   doorOpenedMessageDuration: 1
-  endTransistion: {fileID: 0}
-  textTransistion: {fileID: 0}
-  startTransistion: {fileID: 0}
+  endTransistion: {fileID: 264523340}
+  textTransistion: {fileID: 1770225894}
+  startTransistion: {fileID: 2010173126}
 --- !u!61 &50274723
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -421,33 +420,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.75, y: 5.315}
   m_EdgeRadius: 0
---- !u!114 &50274724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 50274720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c5b133eb3611139765bb5677bb53b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactType: 0
-  type: 0
-  item: 0
-  descriptionText: 
-  customEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  consumeEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  noKeyMessageDuration: 1
-  doorOpenedMessageDuration: 1
-  endTransistion: {fileID: 0}
-  textTransistion: {fileID: 0}
-  startTransistion: {fileID: 0}
 --- !u!212 &50274725
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -637,7 +609,6 @@ GameObject:
   - component: {fileID: 183281505}
   - component: {fileID: 183281504}
   - component: {fileID: 183281503}
-  - component: {fileID: 183281502}
   m_Layer: 9
   m_Name: TilemapDecor
   m_TagString: Untagged
@@ -660,21 +631,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2141510440}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &183281502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183281500}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a755afe72b9343aea12c583e093b440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1444463609}
-  sound: {fileID: 0}
-  hidePrompt: {fileID: 0}
 --- !u!19719996 &183281503
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -1619,6 +1575,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 729154611}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &264523340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7115460230411061082, guid: 526cea91360c54bb1bcc408b32a6c620, type: 3}
+  m_PrefabInstance: {fileID: 8650805241550186085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &272501405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,7 +2028,6 @@ GameObject:
   m_Component:
   - component: {fileID: 437335558}
   - component: {fileID: 437335562}
-  - component: {fileID: 437335561}
   - component: {fileID: 437335560}
   - component: {fileID: 437335559}
   m_Layer: 6
@@ -2116,9 +2076,9 @@ MonoBehaviour:
       m_Calls: []
   noKeyMessageDuration: 1
   doorOpenedMessageDuration: 1
-  endTransistion: {fileID: 0}
-  textTransistion: {fileID: 0}
-  startTransistion: {fileID: 0}
+  endTransistion: {fileID: 264523340}
+  textTransistion: {fileID: 1770225894}
+  startTransistion: {fileID: 2010173126}
 --- !u!61 &437335560
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2164,33 +2124,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.75, y: 5.315}
   m_EdgeRadius: 0
---- !u!114 &437335561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 437335557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c5b133eb3611139765bb5677bb53b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactType: 0
-  type: 0
-  item: 0
-  descriptionText: 
-  customEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  consumeEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  noKeyMessageDuration: 1
-  doorOpenedMessageDuration: 1
-  endTransistion: {fileID: 0}
-  textTransistion: {fileID: 0}
-  startTransistion: {fileID: 0}
 --- !u!212 &437335562
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28765,6 +28698,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.67, y: 8.25}
   m_EdgeRadius: 0
+--- !u!1 &1770225894 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1046154564625693228, guid: 526cea91360c54bb1bcc408b32a6c620, type: 3}
+  m_PrefabInstance: {fileID: 8650805241550186085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1775041428
 GameObject:
   m_ObjectHideFlags: 0
@@ -29641,7 +29579,6 @@ GameObject:
   - component: {fileID: 1912380154}
   - component: {fileID: 1912380153}
   - component: {fileID: 1912380152}
-  - component: {fileID: 1912380151}
   m_Layer: 9
   m_Name: TilemapDecorDarker
   m_TagString: Untagged
@@ -29664,21 +29601,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1706487602}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1912380151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912380149}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a755afe72b9343aea12c583e093b440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1444463609}
-  sound: {fileID: 0}
-  hidePrompt: {fileID: 0}
 --- !u!19719996 &1912380152
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -33895,6 +33817,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1349724781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2010173126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7725751071460907142, guid: 526cea91360c54bb1bcc408b32a6c620, type: 3}
+  m_PrefabInstance: {fileID: 8650805241550186085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2079122110
 GameObject:
   m_ObjectHideFlags: 0
@@ -33906,7 +33833,7 @@ GameObject:
   - component: {fileID: 2079122111}
   - component: {fileID: 2079122113}
   - component: {fileID: 2079122112}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AlarmStartPoint
   m_TagString: AlarmStartPoint
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
