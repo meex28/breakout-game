@@ -8,6 +8,7 @@ TagManager:
   - MessageText
   - GameManager
   - TutorialPanel
+  - AlarmStartPoint
   layers:
   - Default
   - TransparentFX

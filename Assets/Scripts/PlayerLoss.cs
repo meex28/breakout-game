@@ -13,6 +13,7 @@ public class PlayerLoss : MonoBehaviour
     private void Start()
     {
         EnemyAI.PlayerLost += HandlePlayerLost;
+        Alarm.PlayerLost += HandlePlayerLost;
     }
 
     private void HandlePlayerLost(object sender, PlayerLostEvent e)
@@ -21,6 +22,7 @@ public class PlayerLoss : MonoBehaviour
 
         Debug.Log("Handle Player Lost: " + e.message);
         isPlayerDetected = true;
+        StopAlarmIfActive();
 
         if (loseSound != null)
         {
@@ -67,9 +69,23 @@ public class PlayerLoss : MonoBehaviour
         }
     }
 
+    private void StopAlarmIfActive()
+    {
+        var alarm = GameObject.FindGameObjectWithTag("AlarmStartPoint").GetComponent<Alarm>();
+
+        if(alarm == null) 
+        {
+            Debug.LogWarning("Alarm script not found.");
+            return;
+        }
+
+        alarm.StopAlarm();
+    }
+
     private void OnDestroy()
     {
         // Unsubscribe from the event
         EnemyAI.PlayerLost -= HandlePlayerLost;
+        Alarm.PlayerLost -= HandlePlayerLost;
     }
 }

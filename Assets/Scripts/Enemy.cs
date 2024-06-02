@@ -146,7 +146,6 @@ private void IsPlayerInVision()
         if (hit.collider != null && hit.collider.CompareTag("Player"))
         {
             InvokePlayerLostEvent();
-            Debug.Log("Player is in vision!");
         }
         Debug.DrawRay(origin, direction * visionLength, Color.red);
     }

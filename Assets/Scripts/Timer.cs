@@ -6,6 +6,7 @@ public class TimerDisplay : MonoBehaviour
 {
     public GUIStyle timerStyle; // Style for the timer text
     private static List<TimerData> timerDataList = new List<TimerData>(); // List to store timer data
+    private static int nextID = 0; // Variable to assign unique IDs
 
     void Start()
     {
@@ -17,16 +18,32 @@ public class TimerDisplay : MonoBehaviour
         timerStyle.normal.textColor = Color.white; // Set text color
     }
 
-    public void AddTimer(string label, float duration)
+    public int AddTimer(string label, float duration)
     {
-        timerDataList.Add(new TimerData(label, duration, Time.time));
-        StartCoroutine(RunTimer(timerDataList.Count - 1)); // Start coroutine with list index
+        int id = nextID++;
+        TimerData newTimer = new TimerData(id, label, duration, Time.time);
+        timerDataList.Add(newTimer);
+        newTimer.coroutine = StartCoroutine(RunTimer(newTimer)); // Start coroutine and store it in TimerData
+        return id; // Return the ID of the new timer
     }
 
-    IEnumerator RunTimer(int index)
+    public void StopTimer(int id)
     {
-        yield return new WaitForSeconds(timerDataList[index].duration);
-        timerDataList.RemoveAt(index); // Remove completed timer from list
+        for (int i = 0; i < timerDataList.Count; i++)
+        {
+            if (timerDataList[i].id == id)
+            {
+                StopCoroutine(timerDataList[i].coroutine); // Stop the coroutine
+                timerDataList.RemoveAt(i); // Remove the timer from the list
+                break;
+            }
+        }
+    }
+
+    IEnumerator RunTimer(TimerData timerData)
+    {
+        yield return new WaitForSeconds(timerData.duration);
+        timerDataList.Remove(timerData); // Remove completed timer from list
     }
 
     void OnGUI()
@@ -52,6 +69,7 @@ public class TimerDisplay : MonoBehaviour
                 else // Timer is finished, remove it from the list
                 {
                     timerDataList.RemoveAt(i);
+                    i--; // Adjust the index to account for the removed item
                 }
             }
         }
@@ -60,13 +78,18 @@ public class TimerDisplay : MonoBehaviour
 
 public class TimerData
 {
+    public int id;
     public string label;
     public float duration;
     public float startTime;
-    public TimerData(string label, float duration, float startTime)
+    public Coroutine coroutine; // Add coroutine reference
+
+    public TimerData(int id, string label, float duration, float startTime)
     {
+        this.id = id;
         this.label = label;
         this.duration = duration;
         this.startTime = startTime;
+        this.coroutine = null; // Initialize coroutine as null
     }
 }
