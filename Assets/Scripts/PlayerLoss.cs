@@ -22,8 +22,6 @@ public class PlayerLoss : MonoBehaviour
 
         Debug.Log("Handle Player Lost: " + e.message);
         isPlayerDetected = true;
-        StopAlarmIfActive();
-
         if (loseSound != null)
         {
             AudioSource.PlayClipAtPoint(loseSound, Camera.main.transform.position);
@@ -52,6 +50,8 @@ public class PlayerLoss : MonoBehaviour
 
     private void MovePlayerToRespawnPoint()
     {
+        StopAlarmIfActive();
+        
         if (player != null && respawnPoint != null)
         {
             player.GetComponent<InventorySystem>().ClearInventory();

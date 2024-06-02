@@ -9,6 +9,7 @@ TagManager:
   - GameManager
   - TutorialPanel
   - AlarmStartPoint
+  - BackgroundMusic
   layers:
   - Default
   - TransparentFX
