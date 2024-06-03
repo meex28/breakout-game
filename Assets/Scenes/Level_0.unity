@@ -1441,10 +1441,11 @@ MonoBehaviour:
   consumeEvent:
     m_PersistentCalls:
       m_Calls: []
-  noKeyMessageduration: 1
+  noKeyMessageDuration: 1
   doorOpenedMessageDuration: 1
   endTransistion: {fileID: 0}
   textTransistion: {fileID: 0}
+  startTransistion: {fileID: 0}
 --- !u!61 &651369793
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1512,10 +1513,11 @@ MonoBehaviour:
   consumeEvent:
     m_PersistentCalls:
       m_Calls: []
-  noKeyMessageduration: 1
+  noKeyMessageDuration: 1
   doorOpenedMessageDuration: 1
-  endTransistion: {fileID: 0}
-  textTransistion: {fileID: 0}
+  endTransistion: {fileID: 1119371282}
+  textTransistion: {fileID: 2039486368}
+  startTransistion: {fileID: 1092223317}
 --- !u!212 &651369795
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32433,6 +32435,16 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!1 &1092223317 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7725751071460907142, guid: 526cea91360c54bb1bcc408b32a6c620, type: 3}
+  m_PrefabInstance: {fileID: 1588545035}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1119371282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7115460230411061082, guid: 526cea91360c54bb1bcc408b32a6c620, type: 3}
+  m_PrefabInstance: {fileID: 1588545035}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1194131373
 GameObject:
   m_ObjectHideFlags: 0
@@ -32715,7 +32727,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246166232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33764,7 +33776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 12408169079637959, guid: 526cea91360c54bb1bcc408b32a6c620, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 12408169079637959, guid: 526cea91360c54bb1bcc408b32a6c620, type: 3}
       propertyPath: m_LocalRotation.w
@@ -34132,7 +34144,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645513839}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 0.1321101, y: 0.1321101, z: 0.1321101}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -35298,6 +35310,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -32.999985
       objectReference: {fileID: 0}
+    - target: {fileID: 1423272969663232391, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 1449308703892280870, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -35357,6 +35373,10 @@ PrefabInstance:
     - target: {fileID: 2696294622093243296, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
       propertyPath: m_SizeDelta.y
       value: 1156.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696294622093243296, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 2696294622093243296, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -35658,6 +35678,10 @@ PrefabInstance:
       propertyPath: m_UiScaleMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6939577379973550036, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 7223605638146543133, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
       propertyPath: m_FontData.m_FontSize
       value: 42
@@ -35725,6 +35749,10 @@ PrefabInstance:
     - target: {fileID: 7697909339505412085, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
       propertyPath: m_FontData.m_FontSize
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879758885013485157, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 8971117921506616689, guid: d18cb3511fc0bce2ebf8855bc42e501f, type: 3}
       propertyPath: m_FontData.m_FontSize
@@ -36175,6 +36203,11 @@ Transform:
   - {fileID: 1783951881}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2039486368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1046154564625693228, guid: 526cea91360c54bb1bcc408b32a6c620, type: 3}
+  m_PrefabInstance: {fileID: 1588545035}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2071765107
 GameObject:
   m_ObjectHideFlags: 0
