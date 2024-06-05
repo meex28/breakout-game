@@ -14,11 +14,15 @@ public class MinigameController : MonoBehaviour
     public Canvas gameCanvas;
     public GameObject cabinet;
     public GameObject key;
+    public GameObject openText;
+    public GameObject bar;
 
     private int currentTask = 0;
+    private Vector2 initialGreenZoneSize;
 
     void Start()
     {
+        initialGreenZoneSize = greenZone.sizeDelta;
         ResetLocks();
     }
 
@@ -45,6 +49,7 @@ public class MinigameController : MonoBehaviour
 
             if (currentTask < lockImages.Length)
             {
+                ShrinkGreenZone();
                 greenZoneController.GenerateNewZone();
             }
             else
@@ -63,6 +68,13 @@ public class MinigameController : MonoBehaviour
     void EndGame()
     {
         Debug.Log("Congratulations! You have completed all tasks!");
+        indicator.gameObject.SetActive(false);
+        greenZone.gameObject.SetActive(false);
+        bar.gameObject.SetActive(false);
+        foreach(Image image in lockImages) {
+            image.gameObject.SetActive(false);
+        }
+        openText.gameObject.SetActive(true);
         StartCoroutine(DisableCanvasAfterDelay(1.0f));
     }
 
@@ -81,6 +93,12 @@ public class MinigameController : MonoBehaviour
             lockImage.sprite = closedLockSprite;
         }
         currentTask = 0;
+        greenZone.sizeDelta = initialGreenZoneSize;
         greenZoneController.GenerateNewZone();
+    }
+
+    void ShrinkGreenZone()
+    {
+        greenZone.sizeDelta *= 0.9f;
     }
 }

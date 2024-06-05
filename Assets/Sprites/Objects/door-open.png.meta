@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: df1ecb5250bf54228aebe256656e27f5
+guid: c00e68ed3e45f46abaccea965dcfa2c7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mop_0
+      name: door-open_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 18
+        x: 0
+        y: 32
         width: 16
-        height: 18
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,83 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13eb604d2a9d6495b8381a62b0fb933f
-      internalID: -1681769997
+      spriteID: 6596ce11c77fb403e891a75f241a6744
+      internalID: -1521760794
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mop_1
+      name: door-open_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0dfd21877da340bfad2fc63ea7e2513
+      internalID: -1357261723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door-open_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 477f1203de0c7447c82cc77f071b2a4c
+      internalID: 950766037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door-open_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8181856c5fc243e392daea5fe3aab52
+      internalID: 561564376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: door-open_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 18
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d34510ee37c2a4ac48c91bf9d942e234
-      internalID: -307327309
+      spriteID: a22a67880906541c4ad86171a90fd074
+      internalID: -1712749748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mop_2
+      name: door-open_5
       rect:
         serializedVersion: 2
         x: 16
         y: 0
         width: 16
-        height: 18
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06d62d8d80b1a4ffd9b23a3c61bdeca0
-      internalID: 397333191
+      spriteID: d18018c3ca70f4ac69ad70dcb3250b1f
+      internalID: 1229577248
       vertices: []
       indices: 
       edges: []
@@ -183,9 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Mop_0: -1681769997
-      Mop_1: -307327309
-      Mop_2: 397333191
+      door-open_0: -1521760794
+      door-open_1: -1357261723
+      door-open_2: 950766037
+      door-open_3: 561564376
+      door-open_4: -1712749748
+      door-open_5: 1229577248
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: df1ecb5250bf54228aebe256656e27f5
+guid: 598395b0b4ca34c9e85ecf005977e2da
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mop_0
+      name: CEla-transparent_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 18
+        x: 0
+        y: 32
         width: 16
-        height: 18
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,125 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13eb604d2a9d6495b8381a62b0fb933f
-      internalID: -1681769997
+      spriteID: 81469a00fd8b3449792951720afbbc0a
+      internalID: -1362802660
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mop_1
+      name: CEla-transparent_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78995299e5ceb497c956ba229762902b
+      internalID: 97032768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CEla-transparent_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e56baf50e8f84229b8fb7f0da6e5b02
+      internalID: 978568759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CEla-transparent_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be6cc883d1e364bf29f88c1eb953c102
+      internalID: -2108325149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CEla-transparent_4
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c02b029aa21e34d968a99eb6e6277879
+      internalID: 2143551542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CEla-transparent_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06b2dde4ccddb4cf08c3b3598a50662a
+      internalID: 1754342436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CEla-transparent_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 18
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d34510ee37c2a4ac48c91bf9d942e234
-      internalID: -307327309
+      spriteID: f1b25394cc4dc4336a74ec1692ffef54
+      internalID: -525965480
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mop_2
+      name: CEla-transparent_7
       rect:
         serializedVersion: 2
         x: 16
         y: 0
         width: 16
-        height: 18
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +271,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06d62d8d80b1a4ffd9b23a3c61bdeca0
-      internalID: 397333191
+      spriteID: 63511e848a66d4af1b7e879da0008fe3
+      internalID: 1530080873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CEla-transparent_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 373416d8e316f4fdab64ef89d26535c1
+      internalID: 693808654
       vertices: []
       indices: 
       edges: []
@@ -183,9 +309,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Mop_0: -1681769997
-      Mop_1: -307327309
-      Mop_2: 397333191
+      CEla-transparent_0: -1362802660
+      CEla-transparent_1: 97032768
+      CEla-transparent_2: 978568759
+      CEla-transparent_3: -2108325149
+      CEla-transparent_4: 2143551542
+      CEla-transparent_5: 1754342436
+      CEla-transparent_6: -525965480
+      CEla-transparent_7: 1530080873
+      CEla-transparent_8: 693808654
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

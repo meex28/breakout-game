@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: df1ecb5250bf54228aebe256656e27f5
+guid: e75661a8c951e4757902c80b7c6d2209
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
@@ -110,34 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mop_0
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 18
-        width: 16
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 13eb604d2a9d6495b8381a62b0fb933f
-      internalID: -1681769997
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mop_1
+      name: camera_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 18
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d34510ee37c2a4ac48c91bf9d942e234
-      internalID: -307327309
+      spriteID: faa8b2d3622244f508f276bd1d7ffe6d
+      internalID: -336795940
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mop_2
+      name: camera_1
       rect:
         serializedVersion: 2
         x: 16
         y: 0
         width: 16
-        height: 18
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06d62d8d80b1a4ffd9b23a3c61bdeca0
-      internalID: 397333191
+      spriteID: d206d97c833ab4996bee2bd5869f19fc
+      internalID: -1770151065
       vertices: []
       indices: 
       edges: []
@@ -183,9 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Mop_0: -1681769997
-      Mop_1: -307327309
-      Mop_2: 397333191
+      camera_0: -336795940
+      camera_1: -1770151065
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

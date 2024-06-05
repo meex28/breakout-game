@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;  // Add this line to use SceneManager
+using UnityEngine.SceneManagement;
 
 public class PlayerLoss : MonoBehaviour
 {
@@ -22,37 +22,37 @@ public class PlayerLoss : MonoBehaviour
 
         Debug.Log("Handle Player Lost: " + e.message);
         isPlayerDetected = true;
+        playerLostScreen.SetActive(true);
         if (loseSound != null)
         {
             AudioSource.PlayClipAtPoint(loseSound, Camera.main.transform.position);
-            playerLostScreen.SetActive(true);
-            StartCoroutine(MovePlayerToRespawnPointAfterSound());
+            StartCoroutine(ReloadSceneAfterSound());
         }
         else
         {
             Debug.LogWarning("No lose sound assigned.");
-            MovePlayerToRespawnPoint();
+            ReloadScene();
         }
     }
 
-    private IEnumerator MovePlayerToRespawnPointAfterSound()
+    private IEnumerator ReloadSceneAfterSound()
     {
         yield return new WaitForSeconds(loseSound.length);
-        MovePlayerToRespawnPoint();
+        ReloadScene();
     }
 
-    // use little delay to prevent running lossing second time - idk why its happening
+    // Use little delay to prevent running losing logic multiple times
     private IEnumerator ResetPlayerDetectionFlag()
     {
         yield return new WaitForSeconds(1f);
         isPlayerDetected = false;
     }
 
-    private void MovePlayerToRespawnPoint()
+    private void ReloadScene()
     {
         StopAlarmIfActive();
-        
-        if (player != null && respawnPoint != null)
+
+        if (player != null)
         {
             player.GetComponent<InventorySystem>().ClearInventory();
             StartCoroutine(ResetPlayerDetectionFlag());
@@ -60,12 +60,10 @@ public class PlayerLoss : MonoBehaviour
             // Reload the current scene
             Scene currentScene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(currentScene.name);
-
-            playerLostScreen.SetActive(false);
         }
         else
         {
-            Debug.LogWarning("Player or respawn point not assigned.");
+            Debug.LogWarning("Player not assigned.");
         }
     }
 
@@ -73,7 +71,7 @@ public class PlayerLoss : MonoBehaviour
     {
         var alarm = GameObject.FindGameObjectWithTag("AlarmStartPoint")?.GetComponent<Alarm>();
 
-        if(alarm == null) 
+        if (alarm == null)
         {
             Debug.LogWarning("Alarm script not found.");
             return;
