@@ -11,7 +11,6 @@ public class LevelFinalDoor : Item
 
     private void Start()
     {
-        // Start the coroutine to deactivate startTransistion after 1 second
         StartCoroutine(DeactivateStartTransistion());
     }
 
@@ -19,7 +18,7 @@ public class LevelFinalDoor : Item
         bool playerHasKey = GameObject.FindWithTag("Player").GetComponent<InventorySystem>().IncludesItem(Items.KEY);
 
         if (!playerHasKey) {
-            MessageTextUI.DisplayMessage("Potrzebujesz klucza, by otworzyć drzwi!", noKeyMessageDuration);
+            MessageTextUI.DisplayMessage("Potrzebujesz klucza, aby otworzyć drzwi!", noKeyMessageDuration);
             return;
         }
 

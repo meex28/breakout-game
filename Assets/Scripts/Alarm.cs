@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class Alarm : MonoBehaviour
 {
-    public int alarmDuration = 120;
+    public int alarmDuration = 100;
     public AudioSource alarmSound;
     public float alarmInterval = 5f;
     public float alarmStartedMessageDuration = 2f;
+    public GameObject alarmAnimation;
     private int timerId = -1;
+
 
     private bool alarmActive = false;
 
@@ -30,9 +32,9 @@ public class Alarm : MonoBehaviour
         }
         
         Debug.Log("Alarm started!");
-        MessageTextUI.DisplayMessage("Ucieknij przed przybyciem oddziału prewencji!", alarmStartedMessageDuration);
+        alarmAnimation.gameObject.SetActive(true);
         alarmActive = true;
-        timerId = GameObject.FindWithTag("GameManager").GetComponent<TimerDisplay>().AddTimer("Oddzial prewencji", alarmDuration);
+        timerId = GameObject.FindWithTag("GameManager").GetComponent<TimerDisplay>().AddTimer("Czas na ucieczkę", alarmDuration);
         alarmSound.Play();
         StartCoroutine(PlayAlarmSound());
         StartCoroutine(Countdown());

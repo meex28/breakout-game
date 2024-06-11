@@ -11,17 +11,18 @@ public class Item : MonoBehaviour
     [Header("Attributes")]
     public InteractionType interactType;
     public ItemType type;
-    public Items item; // item like energy_drink etc. TODO: refactor probably and rethink whole interaction system
+    public Items item;
     [Header("Examine")]
     public string descriptionText;
     [Header("Custom Events")]
     public UnityEvent customEvent;
     public UnityEvent consumeEvent;
+    public AudioSource pickupAudio;
 
     private void Reset()
     {
         GetComponent<Collider2D>().isTrigger = true;
-        gameObject.layer = 6; // TODO: get layer by name or sth?
+        gameObject.layer = 6;
     }
 
     virtual public void Interact()
@@ -31,6 +32,9 @@ public class Item : MonoBehaviour
             case InteractionType.PickUp:
                 FindObjectOfType<InventorySystem>().PickUp(gameObject);
                 gameObject.SetActive(false);
+                if(pickupAudio != null) {
+                    pickupAudio?.Play();
+                }
                 break;
             case InteractionType.Examine:
                 FindObjectOfType<InteractionSystem>().ExamineItem(this);                
