@@ -7,7 +7,7 @@ public class MuteMusic : MonoBehaviour
     public Image soundOnIcon;
     public Image soundOffIcon;
     private bool muted = false;
-    private void Start()
+    private void Awake()
     {
         source = GameObject.FindGameObjectWithTag("BackgroundMusic").GetComponent<AudioSource>();
         Load();
