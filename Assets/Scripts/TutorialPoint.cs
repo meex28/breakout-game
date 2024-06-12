@@ -21,7 +21,7 @@ public class TutorialPoint : MonoBehaviour
         messages.Add("beforeGuards", "Unikaj wizji strażników, by nie zostać złapanym. Użyj skrytek, żeby ich ominąć.");
         messages.Add("finalDoors", "Aby wydostać się z poziomu musisz przejść przez finałowe drzwi. Znajdź klucz, by je otworzyć. Znajduje się on w sejfie na końcu korytarza.");
         messages.Add("lockpick", "By otworzyć sejf potrzebujesz wytrycha, podnieś go.");
-        messages.Add("finalKey", "Otwórz sejf, aby zdobyć klucz. Gdy to zrobisz, będziesz mógł otworzyć drzwi.");
+        messages.Add("finalKey", "Otwórz sejf, aby zdobyć klucz. Gdy to zrobisz, będziesz mógł otworzyć drzwi. (Używaj klawisza 'E')");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
