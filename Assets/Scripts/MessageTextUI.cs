@@ -15,7 +15,6 @@ public class MessageTextUI : MonoBehaviour
             if (messageText != null && animator != null)
             {
                 messageText.text = text;
-                animator.SetTrigger("Display");
 
                 MonoBehaviour monoBehaviour = messageObject.GetComponent<MonoBehaviour>();
                 monoBehaviour.StartCoroutine(HideMessageAfterDuration(duration, messageText, animator));
