@@ -10,14 +10,13 @@ public class MessageTextUI : MonoBehaviour
         if (messageObject != null)
         {
             Text messageText = messageObject.GetComponent<Text>();
-            Animator animator = messageObject.GetComponent<Animator>();
-
-            if (messageText != null && animator != null)
+            Animation animation = messageObject.GetComponent<Animation>();
+            if (messageText != null && animation != null && !animation.isPlaying)
             {
                 messageText.text = text;
-
+                animation.Play();
                 MonoBehaviour monoBehaviour = messageObject.GetComponent<MonoBehaviour>();
-                monoBehaviour.StartCoroutine(HideMessageAfterDuration(duration, messageText, animator));
+                monoBehaviour.StartCoroutine(HideMessageAfterDuration(duration, messageText));
             }
         }
         else
@@ -26,10 +25,9 @@ public class MessageTextUI : MonoBehaviour
         }
     }
 
-    private static IEnumerator HideMessageAfterDuration(float duration, Text messageText, Animator animator)
+    private static IEnumerator HideMessageAfterDuration(float duration, Text messageText)
     {
         yield return new WaitForSeconds(duration);
         messageText.text = "";
-        animator.SetTrigger("Hide");
     }
 }

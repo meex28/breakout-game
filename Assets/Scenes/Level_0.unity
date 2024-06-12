@@ -394,6 +394,11 @@ Transform:
   - {fileID: 626222819}
   m_Father: {fileID: 1556034576}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &398042276 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3398939458961208009, guid: a59cf793b5b8122de9605033cbdf14ee, type: 3}
+  m_PrefabInstance: {fileID: 720325272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &416448646 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2720476785461757614, guid: 8a832325925f345f6a4819a8baa3734d, type: 3}
@@ -34234,6 +34239,11 @@ Transform:
   - {fileID: 356716231}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1568549583 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1040547901684150869, guid: a59cf793b5b8122de9605033cbdf14ee, type: 3}
+  m_PrefabInstance: {fileID: 720325272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1574179847
 GameObject:
   m_ObjectHideFlags: 0
@@ -34420,7 +34430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1936852422}
-  sound: {fileID: 0}
+  sound: {fileID: 1568549583}
   hidePrompt: {fileID: 1874678205}
 --- !u!19719996 &1618309141
 TilemapCollider2D:
@@ -35842,7 +35852,7 @@ PrefabInstance:
     - target: {fileID: 5614309586424950678, guid: cd1cbb7eae53f2790880e94a3f5d95d4, type: 3}
       propertyPath: moveSound
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 398042276}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
