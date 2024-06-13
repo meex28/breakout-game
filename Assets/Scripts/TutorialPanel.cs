@@ -1,10 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TutorialPanel : MonoBehaviour
 {
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Close();
+        }
+    }
+
     public void Close()
     {
         Time.timeScale = 1f;
@@ -13,6 +18,7 @@ public class TutorialPanel : MonoBehaviour
 
     public void FinishTutorial()
     {
+        LossCounterManager.Instance.ResetLossCount();
         Time.timeScale = 1f;
         SceneManager.LoadScene(2);
     }

@@ -15,7 +15,7 @@ public class TimerDisplay : MonoBehaviour
         {
             alignment = TextAnchor.UpperRight,
             font = font,
-            fontSize = 24,
+            fontSize = 20,
         };
         timerStyle.normal.textColor = Color.white;
     }

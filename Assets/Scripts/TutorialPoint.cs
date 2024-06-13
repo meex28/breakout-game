@@ -14,14 +14,15 @@ public class TutorialPoint : MonoBehaviour
 
     void Start()
     {
-        // initialize messages
-        messages.Add("welcome", "Witaj w tutorialu Breakout! Twoim zadaniem będzie pokonanie kolejnych poziomów i ucieczka z więzienia. Idź dalej, by poznać kolejne elementy gry. Powodzenia!");
-        messages.Add("energyDrinkPickedUp", "Podniosłeś pierwszy przedmiot - napój energetyczny. Użyj przycisku '1', by go wypróbować!");
+        messages.Add("welcome", "Witaj w grze Breakout!\n Twoim zadaniem będzie ucieczka z podziemnego więzienia.\n \nPowodzenia!");
+        messages.Add("items","W więzieniu można znaleźć różne przedmioty, które pomogą Ci w ucieczce. Możesz je podnieść, naciskając klawisz 'E'.");
+        messages.Add("useItems", "W grze istnieją dwa rodzaje przedmiotów:\n1. Napój energetyczny - zwiększa prędkość poruszania\n2. Koszulka camo - chwilowo czyni cię niewykrywalnym\nIch dostępność jest widoczna w lewym górnym rogu ekranu.\nAby użyć przedmiotu, naciśnij klawisz 1 lub 2.");
         messages.Add("afterEnergyDrinkUsage", "W grze znajdują się także inne przedmioty. Znajdziesz je w następnych poziomach.");
-        messages.Add("beforeGuards", "Unikaj wizji strażników, by nie zostać złapanym. Użyj skrytek, żeby ich ominąć.");
-        messages.Add("finalDoors", "Aby wydostać się z poziomu musisz przejść przez finałowe drzwi. Znajdź klucz, by je otworzyć. Znajduje się on w sejfie na końcu korytarza.");
-        messages.Add("lockpick", "By otworzyć sejf potrzebujesz wytrycha, podnieś go.");
-        messages.Add("finalKey", "Otwórz sejf, aby zdobyć klucz. Gdy to zrobisz, będziesz mógł otworzyć drzwi. (Używaj klawisza 'E')");
+        messages.Add("beforeGuards", "Podczas ucieczki na swojej drodze napotkasz strażników. Unikaj ich pola widzenia, aby nie zostać złapanym. W tym celu wykorzystaj otoczenie.");
+        messages.Add("hide", "Kiedy znajdziesz się w miejscu odpowiednim do schowania, na ekranie pojawi się informacja. Naciśnij klawisz 'E', aby się schować.");
+        messages.Add("finalDoors", "Aby dostać się na następne piętro musisz przejść przez drzwi. Niestety bez klucza się nie obejdzie. Straż trzyma go w sejfie.");
+        messages.Add("lockpick", "Do otwarcia sejfu potrzebujesz wytrycha. Jest on schowany na każdym poziomie.");
+        messages.Add("finalKey", "Próba otwarcia sejfy zaczcyna się po naciśnięciu klawisza 'E'.\n Aby otworzyc sejf musisz otworzyć trzy zabezpieczenia. Naciskaj klawisz 'E' w momencie kiedy wskazówka znajdzie się w zielonej strefie.");
     }
 
     private void OnTriggerEnter2D(Collider2D other)

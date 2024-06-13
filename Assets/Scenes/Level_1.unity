@@ -23780,6 +23780,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 150089546389516626, guid: e0206aa7a7e420aee86457a80473ea39, type: 3}
+      propertyPath: font
+      value: 
+      objectReference: {fileID: 12800000, guid: 6208ca918b2aa4df291b6da552a172d1, type: 3}
+    - target: {fileID: 150089546389516626, guid: e0206aa7a7e420aee86457a80473ea39, type: 3}
+      propertyPath: timerStyle.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 6208ca918b2aa4df291b6da552a172d1, type: 3}
     - target: {fileID: 5131638561029710802, guid: e0206aa7a7e420aee86457a80473ea39, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -26135,6 +26143,50 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1462947606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1462947608}
+  - component: {fileID: 1462947607}
+  m_Layer: 0
+  m_Name: LossCounterManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1462947607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462947606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6b172942a8f4ba4909fd4202139789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1462947608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462947606}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -78.933685, y: 15.8926325, z: 2.6713681}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1540406748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33339,3 +33391,4 @@ SceneRoots:
   - {fileID: 8096093185090986494}
   - {fileID: 1005696974}
   - {fileID: 2054550158}
+  - {fileID: 1462947608}

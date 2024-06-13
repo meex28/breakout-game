@@ -23,6 +23,8 @@ public class PlayerLoss : MonoBehaviour
         Debug.Log("Handle Player Lost: " + e.message);
         isPlayerDetected = true;
         playerLostScreen.SetActive(true);
+        LossCounterManager.Instance.IncrementLossCount();
+
         if (loseSound != null)
         {
             AudioSource.PlayClipAtPoint(loseSound, Camera.main.transform.position);
@@ -41,7 +43,6 @@ public class PlayerLoss : MonoBehaviour
         ReloadScene();
     }
 
-    // Use little delay to prevent running losing logic multiple times
     private IEnumerator ResetPlayerDetectionFlag()
     {
         yield return new WaitForSeconds(1f);
@@ -57,7 +58,6 @@ public class PlayerLoss : MonoBehaviour
             player.GetComponent<InventorySystem>().ClearInventory();
             StartCoroutine(ResetPlayerDetectionFlag());
 
-            // Reload the current scene
             Scene currentScene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(currentScene.name);
         }
@@ -82,7 +82,6 @@ public class PlayerLoss : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Unsubscribe from the event
         EnemyAI.PlayerLost -= HandlePlayerLost;
         Alarm.PlayerLost -= HandlePlayerLost;
     }

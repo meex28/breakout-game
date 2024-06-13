@@ -25,23 +25,31 @@ public class MainMenu : MonoBehaviour
     }
 
 
-    // levelIndex from 1 to 4, slotIndex from 0 to 3
-    public void Save(int slotIndex)
-    {
-        var levelIndex = SceneManager.GetActiveScene().buildIndex;
-        Debug.Log("Save level " + levelIndex + " to slot " + slotIndex);
-        PlayerPrefs.SetInt(savedLevelsKeys[slotIndex], levelIndex);
-        string saveDatetime = DateTime.Now.ToString(); // Convert datetime to string
-        PlayerPrefs.SetString(savedLevelsKeys[slotIndex] + "_Datetime", saveDatetime);
-        PlayerPrefs.Save();
-        HideSaveSlots();
-    }
+public void Save(int slotIndex)
+{
+    var levelIndex = SceneManager.GetActiveScene().buildIndex;
+    int lossCount = LossCounterManager.Instance.LossCount;
+
+    Debug.Log("Save level " + levelIndex + " to slot " + slotIndex);
+
+    PlayerPrefs.SetInt(savedLevelsKeys[slotIndex], levelIndex);
+
+    PlayerPrefs.SetInt(savedLevelsKeys[slotIndex] + "_LossCount", lossCount);
+
+    string saveDatetime = DateTime.Now.ToString();
+    PlayerPrefs.SetString(savedLevelsKeys[slotIndex] + "_Datetime", saveDatetime);
+
+    PlayerPrefs.Save();
+
+    HideSaveSlots();
+}
 
     public void LoadSavedLevel(int slotIndex)
     {
         var savedLevel = GetSavedLevelFromPrefs(slotIndex);
         Debug.Log("Load saved level " + savedLevel.levelIndex + " from slot " + slotIndex);
         SceneManager.LoadScene(savedLevel.levelIndex);
+        LossCounterManager.Instance.SetLossCount(savedLevel.lossCount);
     }
 
     public SavedLevel[] GetSavedLevelFromPrefs()
@@ -54,17 +62,24 @@ public class MainMenu : MonoBehaviour
         return savedLevels;
     }
 
-    private SavedLevel GetSavedLevelFromPrefs(int slotIndex)
+private SavedLevel GetSavedLevelFromPrefs(int slotIndex)
+{
+    if (!PlayerPrefs.HasKey(savedLevelsKeys[slotIndex]))
     {
-        if (!PlayerPrefs.HasKey(savedLevelsKeys[slotIndex])) {
-            return null;
-        }
-        int levelIndex = PlayerPrefs.GetInt(savedLevelsKeys[slotIndex]);
-        string datetimeKey = savedLevelsKeys[slotIndex] + "_Datetime";
-        string saveDatetimeStr = PlayerPrefs.HasKey(datetimeKey) ? PlayerPrefs.GetString(datetimeKey) : "";
-        DateTime.TryParse(saveDatetimeStr, out DateTime saveDatetime);
-        return new SavedLevel(levelIndex, saveDatetime);
+        return null;
     }
+
+    int levelIndex = PlayerPrefs.GetInt(savedLevelsKeys[slotIndex]);
+
+    string lossCountKey = savedLevelsKeys[slotIndex] + "_LossCount";
+    int lossCount = PlayerPrefs.HasKey(lossCountKey) ? PlayerPrefs.GetInt(lossCountKey) : 0;
+
+    string datetimeKey = savedLevelsKeys[slotIndex] + "_Datetime";
+    string saveDatetimeStr = PlayerPrefs.HasKey(datetimeKey) ? PlayerPrefs.GetString(datetimeKey) : "";
+    DateTime.TryParse(saveDatetimeStr, out DateTime saveDatetime);
+
+    return new SavedLevel(levelIndex, saveDatetime, lossCount);
+}
 
     public void ShowSaveSlots(bool isSaving = false)
     {
