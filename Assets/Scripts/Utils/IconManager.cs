@@ -1,9 +1,7 @@
-using System;
-using System.Reflection;
-using UnityEditor;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class IconManager {
+public class IconManager : MonoBehaviour {
 
     public enum LabelIcon {
         Gray = 0,
@@ -35,37 +33,93 @@ public class IconManager {
         DiamondPurple
     }
 
-    private static GUIContent[] labelIcons;
-    private static GUIContent[] largeIcons;
+    private static Dictionary<LabelIcon, Color> labelIconColors;
+    private static Dictionary<Icon, Color> iconColors;
 
-    public static void SetIcon( GameObject gObj, LabelIcon icon ) {
-        if ( labelIcons == null ) {
-            labelIcons = GetTextures( "sv_label_", string.Empty, 0, 8 );
+    private void Start() {
+        InitializeIconColors();
+    }
+
+    private void InitializeIconColors() {
+        labelIconColors = new Dictionary<LabelIcon, Color> {
+            { LabelIcon.Gray, Color.gray },
+            { LabelIcon.Blue, Color.blue },
+            { LabelIcon.Teal, Color.cyan },
+            { LabelIcon.Green, Color.green },
+            { LabelIcon.Yellow, Color.yellow },
+            { LabelIcon.Orange, new Color(1.0f, 0.5f, 0.0f) }, // Orange
+            { LabelIcon.Red, Color.red },
+            { LabelIcon.Purple, new Color(0.5f, 0.0f, 0.5f) } // Purple
+        };
+
+        iconColors = new Dictionary<Icon, Color> {
+            { Icon.CircleGray, Color.gray },
+            { Icon.CircleBlue, Color.blue },
+            { Icon.CircleTeal, Color.cyan },
+            { Icon.CircleGreen, Color.green },
+            { Icon.CircleYellow, Color.yellow },
+            { Icon.CircleOrange, new Color(1.0f, 0.5f, 0.0f) }, // Orange
+            { Icon.CircleRed, Color.red },
+            { Icon.CirclePurple, new Color(0.5f, 0.0f, 0.5f) }, // Purple
+            { Icon.DiamondGray, Color.gray },
+            { Icon.DiamondBlue, Color.blue },
+            { Icon.DiamondTeal, Color.cyan },
+            { Icon.DiamondGreen, Color.green },
+            { Icon.DiamondYellow, Color.yellow },
+            { Icon.DiamondOrange, new Color(1.0f, 0.5f, 0.0f) }, // Orange
+            { Icon.DiamondRed, Color.red },
+            { Icon.DiamondPurple, new Color(0.5f, 0.0f, 0.5f) } // Purple
+        };
+    }
+
+    public static void SetLabelIcon(GameObject gObj, LabelIcon icon) {
+        if (labelIconColors == null) {
+            Debug.LogWarning("Icon colors not initialized. Call InitializeIconColors in Start.");
+            return;
         }
 
-        SetIcon( gObj, labelIcons[(int)icon].image as Texture2D );
+        Color color;
+        if (labelIconColors.TryGetValue(icon, out color)) {
+            ApplyIcon(gObj, color);
+        } else {
+            Debug.LogWarning("Icon color not found.");
+        }
     }
 
-    public static void SetIcon( GameObject gObj, Icon icon ) {
-        if ( largeIcons == null ) {
-            largeIcons = GetTextures( "sv_icon_dot", "_pix16_gizmo", 0, 16 );
+    public static void SetIcon(GameObject gObj, Icon icon) {
+        if (iconColors == null) {
+            Debug.LogWarning("Icon colors not initialized. Call InitializeIconColors in Start.");
+            return;
         }
 
-        SetIcon( gObj, largeIcons[(int)icon].image as Texture2D );
+        Color color;
+        if (iconColors.TryGetValue(icon, out color)) {
+            ApplyIcon(gObj, color);
+        } else {
+            Debug.LogWarning("Icon color not found.");
+        }
     }
 
-    private static void SetIcon( GameObject gObj, Texture2D texture ) {
-        EditorGUIUtility.SetIconForObject(gObj, texture);
+    private static void ApplyIcon(GameObject gObj, Color color) {
+        // Adding a custom component to handle drawing the icon
+        var iconDrawer = gObj.GetComponent<IconDrawer>();
+        if (iconDrawer == null) {
+            iconDrawer = gObj.AddComponent<IconDrawer>();
+        }
+        iconDrawer.SetColor(color);
     }
 
-    private static GUIContent[] GetTextures( string baseName, string postFix, int startIndex, int count ) {
-        GUIContent[] guiContentArray = new GUIContent[count];
+    // This component is responsible for drawing the icon using Gizmos
+    public class IconDrawer : MonoBehaviour {
+        private Color iconColor;
 
-        for ( int index = 0; index < count; ++index ) {
-            guiContentArray[index] = EditorGUIUtility.IconContent(baseName + (object)(startIndex + index) + postFix);
+        public void SetColor(Color color) {
+            iconColor = color;
         }
 
-        return guiContentArray;
+        private void OnDrawGizmos() {
+            Gizmos.color = iconColor;
+            Gizmos.DrawSphere(transform.position, 0.5f); // Draw a sphere at the GameObject's position
+        }
     }
-
 }

@@ -1827,7 +1827,6 @@ GameObject:
   - component: {fileID: 651369795}
   - component: {fileID: 651369794}
   - component: {fileID: 651369793}
-  - component: {fileID: 651369792}
   m_Layer: 6
   m_Name: LevelFinalDoor
   m_TagString: Untagged
@@ -1850,34 +1849,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 484237734}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &651369792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 651369790}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21c5b133eb3611139765bb5677bb53b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactType: 0
-  type: 0
-  item: 0
-  descriptionText: 
-  customEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  consumeEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  pickupAudio: {fileID: 0}
-  noKeyMessageDuration: 1
-  doorOpenedMessageDuration: 1
-  endTransistion: {fileID: 0}
-  textTransistion: {fileID: 0}
-  startTransistion: {fileID: 0}
 --- !u!61 &651369793
 BoxCollider2D:
   m_ObjectHideFlags: 0
